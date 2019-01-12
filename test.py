@@ -11,11 +11,19 @@ def PATH(p): return os.path.abspath(
 
 caps = {
     'platformName': "Android",
-    'platformVersion': "8.0",
-    'deviceName': "Android",
-    'appPackage': "com.google.android.music",
-    'appActivity': ".tv.HomeActivity",
-    'app': PATH("./playmusic.apk"),
+    'platformVersion': "8.1",
+    'deviceName': "Android Emulator",
+
+    # [Play Music]
+    # 'appPackage': "com.google.android.music",
+    # 'appActivity': ".tv.HomeActivity",
+    # 'app': PATH("./playmusic.apk"),
+
+    # [Sample App]
+    'appPackage': "com.lego.android.tvleanback",
+    'appActivity': "com.example.android.tvleanback.ui.MainActivity",
+    'app': PATH("./LeanbackSampleApp.apk"),
+
     'automationName': "uiautomator2"
 }
 
