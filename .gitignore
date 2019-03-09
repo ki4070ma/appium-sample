@@ -1,1 +1,6 @@
 .idea
+
+output/
+__pycache__/
+
+*.apk
