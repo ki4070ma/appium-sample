@@ -22,7 +22,7 @@ caps = {
     'deviceName': "Android Emulator",
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
-    'app': PATH('./app.apk'),
+    'app': PATH('./gnucash.apk'),
     'automationName': "uiautomator2",
 }
 
@@ -85,8 +85,8 @@ class GnucashAndroidInitialSetupTest(BaseTest):
 
         select_currency = default_currency.next()
         self.assertEqual(select_currency.get_title(), "Select Currency")
-        # currency = "AOA - Kwanza"  # For debug
-        currency = "JPY - Yen"
+        currency = "AOA - Kwanza"  # For debug
+        # currency = "JPY - Yen"
         select_currency.scroll_and_select_item(currency)
 
         account_setup = select_currency.next()
@@ -101,8 +101,8 @@ class GnucashAndroidInitialSetupTest(BaseTest):
         self.assertEqual(review.get_title(), "Review")
         expects = [
             ("DEFAULT CURRENCY", u"Other…"),
-            # ("SELECT CURRENCY", "AOA"),  # For debug
-            ("SELECT CURRENCY", "JPY"),
+            ("SELECT CURRENCY", "AOA"),  # For debug
+            # ("SELECT CURRENCY", "JPY"),
             ("ACCOUNT SETUP", "Create default accounts"),
             ("FEEDBACK OPTIONS", "Disable crash reports"),
         ]
@@ -193,15 +193,15 @@ class GnucashAndroidAccountTests(BaseTest):
             .three_line_menu()\
             .gnucash_label()
 
-        self.assertEqual(accounts_all.get_balance('Assets'), 'JP¥50,000')
-        # self.assertEqual(
-        #     accounts_all.get_balance('Assets'),
-        #     "Kz50,000.00")  # For debug
+        # self.assertEqual(accounts_all.get_balance('Assets'), 'JP¥50,000')
+        self.assertEqual(
+            accounts_all.get_balance('Assets'),
+            "Kz50,000.00")  # For debug
 
-        self.assertEqual(accounts_all.get_balance('Income'), 'JP¥50,000')
-        # self.assertEqual(
-        #     accounts_all.get_balance('Income'),
-        #     "Kz50,000.00")  # For debug
+        # self.assertEqual(accounts_all.get_balance('Income'), 'JP¥50,000')
+        self.assertEqual(
+            accounts_all.get_balance('Income'),
+            "Kz50,000.00")  # For debug
 
     def test_scenario3_add_favorite(self):
         accounts_all = Accounts(self.driver)
@@ -235,8 +235,8 @@ if __name__ == '__main__':
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
     os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
 
-    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
-    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
+    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidAccountTests)
