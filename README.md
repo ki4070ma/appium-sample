@@ -1,3 +1,6 @@
+[![Job Status](https://inspecode.rocro.com/badges/github.com/ki4070ma/appium-sample/status?token=1nBCECjSMHefafDK5jmyGRZXGJUJELiFgQdjGGwM4rk)](https://inspecode.rocro.com/jobs/github.com/ki4070ma/appium-sample/latest?completed=true)
+[![Report](https://inspecode.rocro.com/badges/github.com/ki4070ma/appium-sample/report?token=1nBCECjSMHefafDK5jmyGRZXGJUJELiFgQdjGGwM4rk&branch=master)](https://inspecode.rocro.com/reports/github.com/ki4070ma/appium-sample/branch/master/summary)
+
 # Readme
 To learn appium
 
