@@ -19,6 +19,7 @@ def PATH(p): return os.path.abspath(
 caps = {
     'platformName': "Android",
     'platformVersion': "8.0",
+    # 'platformVersion': "9",
     'deviceName': "Android Emulator",
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
@@ -28,8 +29,8 @@ caps = {
 
 
 class BaseTest(unittest.TestCase):
-    def __init__(self, methodName):
-        super(BaseTest, self).__init__(methodName)
+    def __init__(self, method_name):
+        super(BaseTest, self).__init__(method_name)
         self.caps = caps
 
     def setUp(self):
@@ -57,7 +58,8 @@ class BaseTest(unittest.TestCase):
         # end the session
         self.driver.quit()
 
-    def make_log_dir(self, dir_name):
+    @staticmethod
+    def make_log_dir(dir_name):
         GlobalVar().log_dir = os.path.join(GlobalVar().log_root_dir, dir_name)
         os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
 
@@ -66,7 +68,16 @@ class GnucashAndroidTest(BaseTest):
 
     def testtest(self):
 
-        print(self.driver.location)
+        # print(self.driver.location)
+        # print(self.driver.finger_print(1))
+        print('')
+        print(self.driver.get_settings())
+        data = {'waitForIdleTimeout': 10001}
+        self.driver.update_settings(data)
+        print(self.driver.get_settings())
+        data = {'waitForIdleTimeout': 10000}
+        self.driver.update_settings(data)
+        print(self.driver.get_settings())
 
         import time
         time.sleep(3)
@@ -235,8 +246,8 @@ if __name__ == '__main__':
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
     os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
 
-    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
-    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
+    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
+    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidAccountTests)
