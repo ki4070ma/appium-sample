@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from typing import Union
+
 from page.initialsetup.account_setup import AccountSetup
 from page.initialsetup.initialsetup_base import InitialSetupBase
 from page.initialsetup.select_currency import SelectCurrency
@@ -14,7 +16,7 @@ class DefaultCurrency(InitialSetupBase):
         super(InitialSetupBase, self).__init__(driver)
         self.select_currency_flg = False
 
-    def next(self) -> SelectCurrency:
+    def next(self) -> Union[SelectCurrency, AccountSetup]:
         super(DefaultCurrency, self).next()
         return SelectCurrency(
             self.driver) if self.select_currency_flg else AccountSetup(

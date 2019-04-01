@@ -12,6 +12,8 @@ To learn appium
    * ```python GnucashAndroidTest.py```
 * Run mypy
    * ```mypy .```
+* Run pyright
+   * ```npx pyright .```
 
 ### tv
 * For android tv
