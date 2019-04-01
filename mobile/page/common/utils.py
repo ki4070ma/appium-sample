@@ -6,6 +6,8 @@ from typing import Tuple, Any
 from appium import webdriver
 
 # FIXME Need better way to have global variable
+
+
 class GlobalVar(object):
 
     log_root_dir = ''

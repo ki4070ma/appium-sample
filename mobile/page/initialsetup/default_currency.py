@@ -10,6 +10,7 @@ from page.common.utils import scroll_and_search_item
 
 from appium import webdriver
 
+
 class DefaultCurrency(InitialSetupBase):
 
     def __init__(self, driver: webdriver) -> None:

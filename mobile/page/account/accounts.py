@@ -8,9 +8,10 @@ from page.common.utils import scroll_and_search_item
 
 from appium import webdriver
 
+
 class Accounts(AccountBasePage):
 
-    def __init__(self, driver: webdriver, tab: str ='ALL') -> None:
+    def __init__(self, driver: webdriver, tab: str = 'ALL') -> None:
         super(AccountBasePage, self).__init__(driver)
         self.tab = tab
 

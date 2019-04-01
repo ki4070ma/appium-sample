@@ -7,6 +7,7 @@ from page.common.basepage import BasePage
 
 from appium import webdriver
 
+
 class AccountBasePage(BasePage):
 
     def three_line_menu(self) -> Any:  # TODO

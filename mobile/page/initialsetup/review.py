@@ -8,6 +8,7 @@ from page.initialsetup.initialsetup_base import InitialSetupBase
 
 from appium import webdriver
 
+
 class Review(InitialSetupBase):
 
     def done(self) -> WhatsNewDialog:

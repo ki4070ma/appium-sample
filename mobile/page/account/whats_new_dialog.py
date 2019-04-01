@@ -6,6 +6,7 @@ from page.common.basepage import BasePage
 
 from appium import webdriver
 
+
 class WhatsNewDialog(BasePage):
 
     def dismiss(self) -> Accounts:

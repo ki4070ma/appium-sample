@@ -7,6 +7,7 @@ from page.common.utils import GlobalVar
 
 from appium import webdriver
 
+
 class BasePage(object):
     def __init__(self, driver: webdriver) -> None:
         self.driver = driver

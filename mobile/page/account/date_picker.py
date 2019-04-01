@@ -10,6 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 from appium import webdriver
 
+
 class DatePicker(BasePage):
 
     def __init__(self, driver: webdriver) -> None:
@@ -42,7 +43,7 @@ class DatePicker(BasePage):
                 swipe = self._swipe_down
             self._scroll_and_select_item(year, swipe)
 
-    def _scroll_and_select_item(self, word: str, swipe: Any, count: int =100) -> bool:  # TODO Any -> _swipe_down/up
+    def _scroll_and_select_item(self, word: str, swipe: Any, count: int = 100) -> bool:  # TODO Any -> _swipe_down/up
         for _ in range(count):
             swipe()
             try:

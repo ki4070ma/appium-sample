@@ -8,6 +8,7 @@ from page.common.basepage import BasePage
 
 from appium import webdriver
 
+
 class ThreeLineMenu(BasePage):
 
     def gnucash_label(self) -> Accounts:

@@ -8,6 +8,7 @@ from page.common.basepage import BasePage
 
 from appium import webdriver
 
+
 class NewTransactionPage(BasePage):
 
     def __init__(self, driver: webdriver, from_subsub_account: str) -> None:

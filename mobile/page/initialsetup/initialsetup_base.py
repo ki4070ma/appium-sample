@@ -8,6 +8,7 @@ from page.common.utils import scroll_and_search_item
 
 from appium import webdriver
 
+
 class InitialSetupBase(BasePage):
 
     def next(self) -> Any:
