@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from typing import Tuple
+from typing import Tuple, Any
 
 from page.account.account_base import AccountBasePage
 from page.common.utils import scroll_and_search_item
@@ -10,11 +10,11 @@ from appium import webdriver
 
 class Accounts(AccountBasePage):
 
-    def __init__(self, driver: webdriver, tab='ALL') -> None:
+    def __init__(self, driver: webdriver, tab: str ='ALL') -> None:
         super(AccountBasePage, self).__init__(driver)
         self.tab = tab
 
-    def account(self, label: str):  # TODO
+    def account(self, label: str) -> Any:  # TODO
         from page.account.sub_accounts import SubAccountsPage
         scroll_and_search_item(self.driver, label).click()
         return SubAccountsPage(self.driver, label)

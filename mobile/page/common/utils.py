@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from typing import Tuple, Any
+
 from appium import webdriver
 
 # FIXME Need better way to have global variable
@@ -11,13 +13,13 @@ class GlobalVar(object):
 
     _instance = None
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, *args: Any, **kwargs: Any) -> Any:  # TODO
         if cls._instance is None:
             cls._instance = object.__new__(cls)
         return cls._instance
 
 
-def get_window_size(driver: webdriver):  # TODO (mypy) return val
+def get_window_size(driver: webdriver) -> Tuple[int, int]:
     size = driver.get_window_size()
     return size['width'], size['height']
 

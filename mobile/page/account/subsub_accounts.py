@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from typing import Tuple
+from typing import Tuple, Any
 
 from page.account.account_base import AccountBasePage
 
@@ -16,7 +16,7 @@ class SubSubAccountsPage(AccountBasePage):
         super(AccountBasePage, self).__init__(driver)
         self.title = title
 
-    def new_transaction(self):
+    def new_transaction(self) -> Any:  # TODO
         self._new_transaction_btn().click()
         from page.account.new_transaction import NewTransactionPage
         return NewTransactionPage(self.driver, self.title)

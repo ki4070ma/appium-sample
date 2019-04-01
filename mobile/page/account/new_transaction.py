@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from page.account.date_picker import DatePicker
 from page.common.basepage import BasePage
 
@@ -12,7 +14,7 @@ class NewTransactionPage(BasePage):
         super(NewTransactionPage, self).__init__(driver)
         self.from_subsub_account = from_subsub_account
 
-    def save(self):  # TODO
+    def save(self) -> Any:  # TODO
         self._save().click()
         from page.account.subsub_accounts import SubSubAccountsPage
         return SubSubAccountsPage(self.driver, self.from_subsub_account)

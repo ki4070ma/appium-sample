@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from typing import List, Tuple
+from typing import List, Tuple, Any
 
 from page.common.basepage import BasePage
 
@@ -9,7 +9,7 @@ from appium import webdriver
 
 class AccountBasePage(BasePage):
 
-    def three_line_menu(self):  # TODO
+    def three_line_menu(self) -> Any:  # TODO
         self._three_line_menu().click()
         from page.account.three_line_menu import ThreeLineMenu
         return ThreeLineMenu(self.driver)

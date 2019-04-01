@@ -10,6 +10,8 @@ To learn appium
 * For android phone
 * Run script
    * ```python GnucashAndroidTest.py```
+* Run mypy
+   * ```mypy .```
 
 ### tv
 * For android tv

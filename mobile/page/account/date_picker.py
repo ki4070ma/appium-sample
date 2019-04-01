@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from page.common.basepage import BasePage
 from page.common.utils import get_window_size
 
@@ -24,7 +26,7 @@ class DatePicker(BasePage):
                 self._swipe_down,
                 count=12) or self._scroll_and_select_item(
                 date,
-                self._swipe_update,
+                self._swipe_up,
                 count=24)):
             raise Exception("Couldn't find target date: " + date)
         self._save().click()
@@ -40,7 +42,7 @@ class DatePicker(BasePage):
                 swipe = self._swipe_down
             self._scroll_and_select_item(year, swipe)
 
-    def _scroll_and_select_item(self, word: str, swipe, count=100) -> bool:
+    def _scroll_and_select_item(self, word: str, swipe: Any, count: int =100) -> bool:  # TODO Any -> _swipe_down/up
         for _ in range(count):
             swipe()
             try:

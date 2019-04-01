@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from typing import Any
+
 from page.account.accounts import Accounts
 from page.common.basepage import BasePage
 
@@ -12,7 +14,7 @@ class ThreeLineMenu(BasePage):
         self._gnucash_label().click()
         return Accounts(self.driver)
 
-    def favorites(self) -> Accounts:
+    def favorites(self) -> Any:
         for el in self._menu_elements():
             if "Favorites" == el.text:
                 el.click()
