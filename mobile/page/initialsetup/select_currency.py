@@ -7,6 +7,6 @@ from page.initialsetup.initialsetup_base import InitialSetupBase
 
 class SelectCurrency(InitialSetupBase):
 
-    def next(self):
+    def next(self) -> AccountSetup:
         super(SelectCurrency, self).next()
         return AccountSetup(self.driver)

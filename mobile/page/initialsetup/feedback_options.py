@@ -7,6 +7,6 @@ from page.initialsetup.review import Review
 
 class FeedbackOptions(InitialSetupBase):
 
-    def next(self):
+    def next(self) -> Review:
         super(FeedbackOptions, self).next()
         return Review(self.driver)

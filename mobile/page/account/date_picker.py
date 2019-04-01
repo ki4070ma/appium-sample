@@ -6,14 +6,15 @@ from page.common.utils import get_window_size
 
 from selenium.common.exceptions import NoSuchElementException
 
+from appium import webdriver
 
 class DatePicker(BasePage):
 
-    def __init__(self, driver):
+    def __init__(self, driver: webdriver) -> None:
         super(DatePicker, self).__init__(driver)
         self.w, self.h = get_window_size(self.driver)
 
-    def set_date(self, year, month, day):
+    def set_date(self, year: str, month: str, day: str) -> None:
         self._set_year(year)
         date = ' '.join([day.zfill(2), month, year])
         # TODO Fix complicated logic
@@ -28,7 +29,7 @@ class DatePicker(BasePage):
             raise Exception("Couldn't find target date: " + date)
         self._save().click()
 
-    def _set_year(self, year):
+    def _set_year(self, year: str) -> None:
         el = self._year()
         if year != el.text:
             el.click()
@@ -39,23 +40,23 @@ class DatePicker(BasePage):
                 swipe = self._swipe_down
             self._scroll_and_select_item(year, swipe)
 
-    def _scroll_and_select_item(self, str, swipe, count=100):
+    def _scroll_and_select_item(self, word: str, swipe, count=100) -> bool:
         for _ in range(count):
             swipe()
             try:
-                self.driver.find_element_by_accessibility_id(str).click()
+                self.driver.find_element_by_accessibility_id(word).click()
                 return True
             except NoSuchElementException:
                 pass
         return False
 
-    def _year(self):
+    def _year(self) -> webdriver:
         return self.driver.find_element_by_id('date_picker_year')
 
-    def _save(self):
+    def _save(self) -> webdriver:
         return self.driver.find_element_by_id('done_button')
 
-    def _swipe_down(self):  # Only for date picker
+    def _swipe_down(self) -> None:  # Only for date picker
         # TODO Should be robust
         self.driver.swipe(
             self.w / 2,
@@ -63,7 +64,7 @@ class DatePicker(BasePage):
             self.w / 5,
             self.h * 4 / 5)
 
-    def _swipe_up(self):  # Only for date picker
+    def _swipe_up(self) -> None:  # Only for date picker
         # TODO Should be robust
         self.driver.swipe(
             self.w / 5,

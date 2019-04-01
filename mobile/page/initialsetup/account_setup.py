@@ -7,6 +7,6 @@ from page.initialsetup.initialsetup_base import InitialSetupBase
 
 class AccountSetup(InitialSetupBase):
 
-    def next(self):
+    def next(self) -> FeedbackOptions:
         super(AccountSetup, self).next()
         return FeedbackOptions(self.driver)

@@ -11,7 +11,7 @@ from appium import webdriver
 
 
 # Returns abs path relative to this file and not cwd
-def PATH(p): return os.path.abspath(
+def PATH(p: str) -> str: return os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
@@ -29,11 +29,11 @@ caps = {
 
 
 class BaseTest(unittest.TestCase):
-    def __init__(self, method_name):
+    def __init__(self, method_name: str) -> None:
         super(BaseTest, self).__init__(method_name)
         self.caps = caps
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.driver = webdriver.Remote(
             'http://localhost:4723/wd/hub', self.caps)
         self.width, self.height = get_window_size(self.driver)
@@ -42,7 +42,7 @@ class BaseTest(unittest.TestCase):
         self.make_log_dir(self._testMethodName)
         self.driver.start_recording_screen()
 
-    def tearDown(self):
+    def tearDown(self) -> None:
         # Stop taking evidence
         payload = self.driver.stop_recording_screen()
         with open(os.path.join(GlobalVar().log_dir, "cap.mp4"), "wb") as fd:
@@ -59,14 +59,14 @@ class BaseTest(unittest.TestCase):
         self.driver.quit()
 
     @staticmethod
-    def make_log_dir(dir_name):
+    def make_log_dir(dir_name: str) -> None:
         GlobalVar().log_dir = os.path.join(GlobalVar().log_root_dir, dir_name)
         os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
 
 
 class GnucashAndroidTest(BaseTest):
 
-    def testtest(self):
+    def testtest(self) -> None:
 
         # print(self.driver.location)
         # print(self.driver.finger_print(1))
@@ -85,7 +85,7 @@ class GnucashAndroidTest(BaseTest):
 
 class GnucashAndroidInitialSetupTest(BaseTest):
 
-    def test_scenario1_complete_initial_setup(self):
+    def test_scenario1_complete_initial_setup(self) -> None:
 
         welcome = Welcome(self.driver)
         self.assertEqual(welcome.get_title(), "Welcome to GnuCash")
@@ -149,11 +149,11 @@ class GnucashAndroidInitialSetupTest(BaseTest):
 
 class GnucashAndroidAccountTests(BaseTest):
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.caps['noReset'] = True  # Uses state with scenario1 finished
         super(GnucashAndroidAccountTests, self).setUp()
 
-    def test_scenario2_register_new_transaction(self):
+    def test_scenario2_register_new_transaction(self) -> None:
         accounts_all = Accounts(self.driver)
         self.assertEqual(accounts_all.get_title(), "Accounts")
 
@@ -214,7 +214,7 @@ class GnucashAndroidAccountTests(BaseTest):
             accounts_all.get_balance('Income'),
             "Kz50,000.00")  # For debug
 
-    def test_scenario3_add_favorite(self):
+    def test_scenario3_add_favorite(self) -> None:
         accounts_all = Accounts(self.driver)
         self.assertEqual(accounts_all.get_title(), "Accounts")
         self.assertTrue(accounts_all.is_tab_focused("ALL"))

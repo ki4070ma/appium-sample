@@ -7,6 +7,6 @@ from page.initialsetup.initialsetup_base import InitialSetupBase
 
 class Welcome(InitialSetupBase):
 
-    def next(self):
+    def next(self) -> DefaultCurrency:
         super(Welcome, self).next()
         return DefaultCurrency(self.driver)
