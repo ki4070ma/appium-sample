@@ -22,5 +22,8 @@ To learn appium
 * For android tv
 
 # Development
+* Setup
+   * ```pip install -r development.txt```
+   * ```pre-commit install```
 * Autopep8
    * ```python -m autopep8 -r --global-config .config-pep8 -i .```

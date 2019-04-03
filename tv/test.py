@@ -5,9 +5,11 @@ import unittest
 
 from appium import webdriver
 
+
 def PATH(p): return os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
+
 
 caps = {
     'platformName': "Android",
