@@ -18,8 +18,8 @@ def PATH(p: str) -> str: return os.path.abspath(
 
 caps = {
     'platformName': "Android",
-    'platformVersion': "8.0",
-    # 'platformVersion': "9",
+    #    'platformVersion': "8.0",
+    'platformVersion': "9",
     'deviceName': "Android Emulator",
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
@@ -70,14 +70,20 @@ class GnucashAndroidTest(BaseTest):
 
         # print(self.driver.location)
         # print(self.driver.finger_print(1))
-        print('')
-        print(self.driver.get_settings())
-        data = {'waitForIdleTimeout': 10001}
-        self.driver.update_settings(data)
-        print(self.driver.get_settings())
-        data = {'waitForIdleTimeout': 10000}
-        self.driver.update_settings(data)
-        print(self.driver.get_settings())
+
+        print('*****')
+
+#        self.driver.send_sms("090-6553-2354", "Hello")
+
+        self.driver.toggle_airplane_mode()
+
+        # print(self.driver.get_settings())
+        # data = {'waitForIdleTimeout': 10001}
+        # self.driver.update_settings(data)
+        # print(self.driver.get_settings())
+        # data = {'waitForIdleTimeout': 10000}
+        # self.driver.update_settings(data)
+        # print(self.driver.get_settings())
 
         import time
         time.sleep(3)
@@ -246,8 +252,8 @@ if __name__ == '__main__':
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
     os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
 
-    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
-    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
+    suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidAccountTests)
