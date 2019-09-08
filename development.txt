@@ -1,3 +1,4 @@
 pre-commit==1.13.0
+pytest==5.1.2
 
 Appium-Python-Client
