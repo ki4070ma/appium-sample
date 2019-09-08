@@ -1,0 +1,26 @@
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '11.x'
+  displayName: Install Node 11.x
+- script: npm install -g appium@beta --chromedriver_version='2.44'
+  displayName: Install appium
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+- script: brew install ffmpeg
+  displayName: Resolve dependencies (Appium server)
+- script: python setup.py install
+  displayName: Install python language bindings for Appium
+- script: |
+    pip install -r development.txt
+  displayName: Resolve dependencies (Python)
+- script: |
+    git --no-pager log -n1
+    python --version
+    ffmpeg -version
+    appium --version
+    node --version
+  displayName: Check versions
+- script: nohup appium --relaxed-security > appium_log.txt &
+  displayName: Run Appium in background

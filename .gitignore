@@ -3,3 +3,5 @@
 output/
 __pycache__/
 .mypy_cache/
+
+test_*/

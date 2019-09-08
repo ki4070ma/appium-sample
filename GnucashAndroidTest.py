@@ -3,6 +3,7 @@
 import os
 import unittest
 
+
 from page.account.accounts import Accounts
 from page.initialsetup.welcome import Welcome
 from page.common.utils import get_window_size, GlobalVar
@@ -18,8 +19,8 @@ def PATH(p: str) -> str: return os.path.abspath(
 
 caps = {
     'platformName': "Android",
-    #    'platformVersion': "8.0",
-    'platformVersion': "9",
+    'platformVersion': "8.0",
+    # 'platformVersion': "9",
     'deviceName': "Android Emulator",
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
@@ -28,9 +29,9 @@ caps = {
 }
 
 
-class BaseTest(unittest.TestCase):
+class BaseTestCase(unittest.TestCase):
     def __init__(self, method_name: str) -> None:
-        super(BaseTest, self).__init__(method_name)
+        super(BaseTestCase, self).__init__(method_name)
         self.caps = caps
 
     def setUp(self) -> None:
@@ -64,32 +65,7 @@ class BaseTest(unittest.TestCase):
         os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
 
 
-class GnucashAndroidTest(BaseTest):
-
-    def testtest(self) -> None:
-
-        # print(self.driver.location)
-        # print(self.driver.finger_print(1))
-
-        print('*****')
-
-#        self.driver.send_sms("090-6553-2354", "Hello")
-
-        self.driver.toggle_airplane_mode()
-
-        # print(self.driver.get_settings())
-        # data = {'waitForIdleTimeout': 10001}
-        # self.driver.update_settings(data)
-        # print(self.driver.get_settings())
-        # data = {'waitForIdleTimeout': 10000}
-        # self.driver.update_settings(data)
-        # print(self.driver.get_settings())
-
-        import time
-        time.sleep(3)
-
-
-class GnucashAndroidInitialSetupTest(BaseTest):
+class GnucashAndroidInitialSetupTest(BaseTestCase):
 
     def test_scenario1_complete_initial_setup(self) -> None:
 
@@ -153,13 +129,14 @@ class GnucashAndroidInitialSetupTest(BaseTest):
             "Checking menu btn location is top side(height)")
 
 
-class GnucashAndroidAccountTests(BaseTest):
+class GnucashAndroidAccountTests(BaseTestCase):
 
     def setUp(self) -> None:
         self.caps['noReset'] = True  # Uses state with scenario1 finished
         super(GnucashAndroidAccountTests, self).setUp()
 
     def test_scenario2_register_new_transaction(self) -> None:
+        self.skipTest('Skip for now')
         accounts_all = Accounts(self.driver)
         self.assertEqual(accounts_all.get_title(), "Accounts")
 
@@ -221,6 +198,7 @@ class GnucashAndroidAccountTests(BaseTest):
             "Kz50,000.00")  # For debug
 
     def test_scenario3_add_favorite(self) -> None:
+        self.skipTest('Skip for now')
         accounts_all = Accounts(self.driver)
         self.assertEqual(accounts_all.get_title(), "Accounts")
         self.assertTrue(accounts_all.is_tab_focused("ALL"))
@@ -252,7 +230,6 @@ if __name__ == '__main__':
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
     os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
 
-    # suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidTest)  # For debug
     suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
