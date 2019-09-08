@@ -23,7 +23,10 @@ caps = {
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
     'app': PATH('./gnucash.apk'),
-    'automationName': "uiautomator2",
+    'newCommandTimeout': 240,
+    'automationName': 'UIAutomator2',
+    'uiautomator2ServerInstallTimeout': 120000,
+    'adbExecTimeout': 120000
 }
 
 
