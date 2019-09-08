@@ -19,8 +19,6 @@ def PATH(p: str) -> str: return os.path.abspath(
 
 caps = {
     'platformName': "Android",
-    'platformVersion': "8.0",
-    # 'platformVersion': "9",
     'deviceName': "Android Emulator",
     'appPackage': "org.gnucash.android",
     'appActivity': ".ui.account.AccountsActivity",
