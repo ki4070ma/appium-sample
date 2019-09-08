@@ -27,7 +27,7 @@ caps = {
     'automationName': 'UIAutomator2',
     'uiautomator2ServerInstallTimeout': 120000,
     'adbExecTimeout': 120000,
-    'androidInstallTimeout': 90000
+    'androidInstallTimeout': 120000
 }
 
 
@@ -47,6 +47,9 @@ class BaseTestCase(unittest.TestCase):
 
     def tearDown(self) -> None:
         # Stop taking evidence
+        img_path = os.path.join(os.getcwd(), self._testMethodName + '.png')
+        self.driver.get_screenshot_as_file(img_path)
+
         payload = self.driver.stop_recording_screen()
         with open(os.path.join(GlobalVar().log_dir, "cap.mp4"), "wb") as fd:
             import base64
