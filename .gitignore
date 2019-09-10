@@ -5,3 +5,6 @@ __pycache__/
 .mypy_cache/
 
 test_*/
+*.png
+
+venv/
