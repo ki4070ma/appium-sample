@@ -50,6 +50,10 @@ class GnucashAndroidInitialSetupTest(BaseTestCase):
 
         whats_new = review.done()
 
+        # FIXME
+        import time
+        time.sleep(10)
+
         self.assertEqual(whats_new.get_title(), "What's New - v2.3.0")
         accounts_all = whats_new.dismiss()
 
