@@ -8,3 +8,5 @@ test_*/
 *.png
 
 venv/
+
+.tox
