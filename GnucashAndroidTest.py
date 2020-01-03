@@ -45,8 +45,8 @@ class GnucashAndroidInitialSetupTest(BaseTestCase):
             ("ACCOUNT SETUP", "Create default accounts"),
             ("FEEDBACK OPTIONS", "Disable crash reports"),
         ]
-        for val, expect in zip(review.get_list(), expects):
-            self.assertEqual(val, expect)
+        for val, expt in zip(review.get_list(), expects):
+            self.assertEqual(val, expt)
 
         whats_new = review.done()
 
@@ -178,7 +178,7 @@ class GnucashAndroidAccountTests(BaseTestCase):
 if __name__ == '__main__':
     import datetime as dt
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
-    os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
+    os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)  # type: ignore
 
     suite = unittest.TestLoader().loadTestsFromTestCase(GnucashAndroidInitialSetupTest)
     unittest.TextTestRunner(verbosity=2).run(suite)

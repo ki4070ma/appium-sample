@@ -54,7 +54,7 @@ class BaseTestCase(unittest.TestCase):
             import base64
             fd.write(base64.b64decode(payload))
 
-        with open(os.path.join(GlobalVar().log_dir, "log.txt"), "w") as fd:
+        with open(os.path.join(GlobalVar().log_dir, "log.txt"), "w") as fd:  # type: ignore
             logs = self.driver.get_log('logcat')
             for lines in logs:
                 for line in lines['message'].split('¥n'):
@@ -66,11 +66,12 @@ class BaseTestCase(unittest.TestCase):
     @staticmethod
     def make_log_dir(dir_name: str) -> None:
         GlobalVar().log_dir = os.path.join(GlobalVar().log_root_dir, dir_name)
-        os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
+        os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)  # type: ignore
 
 
-def is_ci():
+def is_ci() -> bool:
     """Returns if current execution is running on CI
+
     Returns:
         bool: `True` if current executions is on CI
     """

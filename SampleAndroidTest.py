@@ -50,7 +50,7 @@ class BaseTest(unittest.TestCase):
             import base64
             fd.write(base64.b64decode(payload))
 
-        with open(os.path.join(GlobalVar().log_dir, "log.txt"), "w") as fd:
+        with open(os.path.join(GlobalVar().log_dir, "log.txt"), "w") as fd:  # type: ignore
             logs = self.driver.get_log('logcat')
             for lines in logs:
                 for line in lines['message'].split('¥n'):
@@ -62,7 +62,7 @@ class BaseTest(unittest.TestCase):
     @staticmethod
     def make_log_dir(dir_name: str) -> None:
         GlobalVar().log_dir = os.path.join(GlobalVar().log_root_dir, dir_name)
-        os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
+        os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)  # type: ignore
 
 
 class SampleAndroidTest(BaseTest):
@@ -93,7 +93,7 @@ class SampleAndroidTest(BaseTest):
 if __name__ == '__main__':
     import datetime as dt
     GlobalVar().log_root_dir = os.path.join(PATH('.'), 'output', dt.datetime.now().strftime('%y%m%d-%H%M%S'))
-    os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)
+    os.path.isdir(GlobalVar().log_root_dir) or os.makedirs(GlobalVar().log_root_dir)  # type: ignore
 
     suite = unittest.TestLoader().loadTestsFromTestCase(SampleAndroidTest)  # For debug
     unittest.TextTestRunner(verbosity=2).run(suite)
