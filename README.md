@@ -1,6 +1,5 @@
 [![Build Status](https://dev.azure.com/ki4070ma/ki4070ma.appium-sample/_apis/build/status/ki4070ma.appium-sample?branchName=master)](https://dev.azure.com/ki4070ma/ki4070ma.appium-sample/_build/latest?definitionId=3&branchName=master)
-[![Job Status](https://inspecode.rocro.com/badges/github.com/ki4070ma/appium-sample/status?token=1nBCECjSMHefafDK5jmyGRZXGJUJELiFgQdjGGwM4rk)](https://inspecode.rocro.com/jobs/github.com/ki4070ma/appium-sample/latest?completed=true)
-[![Report](https://inspecode.rocro.com/badges/github.com/ki4070ma/appium-sample/report?token=1nBCECjSMHefafDK5jmyGRZXGJUJELiFgQdjGGwM4rk&branch=master)](https://inspecode.rocro.com/reports/github.com/ki4070ma/appium-sample/branch/master/summary)
+[![Build Status](https://travis-ci.org/ki4070ma/appium-sample.svg?branch=master)](https://travis-ci.org/ki4070ma/appium-sample)
 
 # Readme
 To learn appium
