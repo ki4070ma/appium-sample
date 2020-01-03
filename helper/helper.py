@@ -67,3 +67,11 @@ class BaseTestCase(unittest.TestCase):
     def make_log_dir(dir_name: str) -> None:
         GlobalVar().log_dir = os.path.join(GlobalVar().log_root_dir, dir_name)
         os.path.isdir(GlobalVar().log_dir) or os.makedirs(GlobalVar().log_dir)
+
+
+def is_ci():
+    """Returns if current execution is running on CI
+    Returns:
+        bool: `True` if current executions is on CI
+    """
+    return os.getenv('CI', 'false') == 'true'
