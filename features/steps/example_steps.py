@@ -1,6 +1,31 @@
 from behave import given, when, then, step
 
 
+@given('User starts GnuCash for the first time.')
+def step_impl(context):
+    pass
+
+
+@when('On the {screen} screen: User clicks {button}')
+def step_impl(context):
+    pass
+
+
+@when('On the {screen} screen: User clicks {item} and clicks {button}')
+def step_impl(context):
+    pass
+
+
+@when('On the {screen} screen: User scrolls to {item} and clicks {item} and clicks {button}')
+def step_impl(context):
+    pass
+
+
+@when('On the {screen} screen: User scrolls to {item} and clicks {item} and clicks {button}')
+def step_impl(context):
+    pass
+
+
 @given('we have behave installed')
 def step_impl(context):
     pass
