@@ -18,12 +18,9 @@ To learn appium
 * Run pyright
    * ```npx pyright .```
 
-### tv
-* For android tv
-
 # Development
 * Setup
-   * ```pip install -r development.txt```
+   * ```pip install -r requirements.txt```
    * ```pre-commit install```
 * Autopep8
    * ```python -m autopep8 -r --global-config .config-pep8 -i .```

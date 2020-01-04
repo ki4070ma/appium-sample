@@ -2,5 +2,6 @@ pre-commit==1.13.0
 
 pytest==5.1.2
 pytest-cov==2.7.1
+mypy==0.761
 
-Appium-Python-Client
+Appium-Python-Client==0.49
